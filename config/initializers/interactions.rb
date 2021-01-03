@@ -1,40 +1,4 @@
-class Interactions
-  include Singleton
-
-  NoCurrentInteractionDefined = Class.new(StandardError)
-
-  class << self
-    extend Forwardable
-    def_delegators :instance
-  end
-
-  def self.define(&block)
-    instance.instance_eval(&block)
-  end
-
-  def self.all
-    instance.interactions
-  end
-
-  attr_reader :interactions
-
-  def initialize
-    @interactions = Hash.new { |h, k| h[k] = {} }
-  end
-
-  def define(interaction_name, &block)
-    @interactions[interaction_name] = {}
-    @current_interaction = interaction_name
-    instance_eval(&block)
-    @current_interaction = nil
-  end
-
-  def listen(event, action)
-    raise NoCurrentInteractionDefined unless @current_interaction
-
-    @interactions[@current_interaction][event] = action
-  end
-end
+require_relative '../../lib/interactions'
 
 Interactions.define do
   define :request_vaccination do
