@@ -11,7 +11,7 @@ module Interactions
     Interactions::Definer.all
   end
 
-  def self.initiate!
-    Interactions::Initiator.initiate!(interaction_name, message)
+  def self.initiate!(interaction_name, message)
+    Interactions::Initiator.new(interaction_name, message).initiate!
   end
 end

@@ -1,13 +1,16 @@
-class API::MessagesController < ApplicationController
+class API::MessagesController < API::APIController
   def create
-    Rails.logger.info "Received a message: #{params.inspect}"
-    message = Messsage.create!(source_id: message_params[:sid], body: message_params[:body], from: message_params[:from])
+    message = Message.create!(
+      source_id: message_params['MessageSid'],
+      body: message_params['Body'],
+      from: message_params['From']
+    )
     Interactions.initiate!(:request_vaccination, message)
   end
 
   private
 
   def message_params
-    params.permit(:body, :from, :sid)
+    params.permit('Body', 'From', 'MessageSid')
   end
 end
