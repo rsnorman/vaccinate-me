@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Interaction Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event type</th>
+      <th>Interaction</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @interaction_events.each do |interaction_event| %>
+      <tr>
+        <td><%= interaction_event.event_type_id %></td>
+        <td><%= interaction_event.interaction_id %></td>
+        <td><%= link_to 'Show', interaction_event %></td>
+        <td><%= link_to 'Edit', edit_interaction_event_path(interaction_event) %></td>
+        <td><%= link_to 'Destroy', interaction_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Interaction Event', new_interaction_event_path %>

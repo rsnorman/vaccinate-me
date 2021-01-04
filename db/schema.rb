@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_023351) do
+ActiveRecord::Schema.define(version: 2021_01_04_024439) do
+
+  create_table "event_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "interaction_events", force: :cascade do |t|
+    t.integer "event_type_id", null: false
+    t.integer "interaction_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_type_id"], name: "index_interaction_events_on_event_type_id"
+    t.index ["interaction_id"], name: "index_interaction_events_on_interaction_id"
+  end
 
   create_table "interaction_types", force: :cascade do |t|
     t.string "name"
@@ -41,5 +56,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_023351) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "interaction_events", "event_types"
+  add_foreign_key "interaction_events", "interactions"
   add_foreign_key "interactions", "interaction_types"
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :interaction_events
+  resources :event_types
   resources :interactions
   resources :interaction_types
   resources :messages

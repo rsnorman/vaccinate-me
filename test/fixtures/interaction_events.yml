@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_type: one
+  interaction: one
+
+two:
+  event_type: two
+  interaction: two

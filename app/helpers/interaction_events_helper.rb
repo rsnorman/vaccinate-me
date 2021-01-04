@@ -1,0 +1,2 @@
+module InteractionEventsHelper
+end
