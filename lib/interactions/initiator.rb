@@ -9,7 +9,9 @@ class Interactions::Initiator
       interaction = ::Interaction.create!(
         interaction_type: InteractionType.find_or_create_by!(name: @interaction_definition.name)
       )
-      Interactions::EventRecorder.record!(interaction, "initiate_#{@interaction_definition.name}".to_sym)
+      Interactions::EventRecorder.record!(
+        interaction, "initiate_#{@interaction_definition.name}_interaction".to_sym
+      )
     end
   end
 end

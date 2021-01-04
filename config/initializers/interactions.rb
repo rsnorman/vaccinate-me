@@ -4,7 +4,7 @@ Interactions.define do
   define :request_vaccination do
     listen :receive_text_message, CreateUser
     listen :create_user, InitiateVaccinateRequestInteraction
-    listen :initiate_vaccinate_request_interaction, RequestUserFullName
+    listen :initiate_request_vaccination_interaction, RequestUserFullName
     listen :receive_user_full_name, SaveUserFullName
     listen :save_user_name, RequestUserBirthDate
     listen :receive_user_birth_date, SaveUserBirthDate

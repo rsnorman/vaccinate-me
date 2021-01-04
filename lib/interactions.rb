@@ -3,6 +3,7 @@ module Interactions
   require_relative 'interactions/interaction_definition'
   require_relative 'interactions/initiator'
   require_relative 'interactions/event_recorder'
+  require_relative 'interactions/event_notifier'
 
   def self.define(&block)
     Interactions::Definer.define(&block)
