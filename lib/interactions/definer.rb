@@ -1,8 +1,6 @@
 class Interactions::Definer
   include Singleton
 
-  NoCurrentInteractionDefined = Class.new(StandardError)
-
   class << self
     extend Forwardable
     def_delegators :instance
@@ -26,11 +24,5 @@ class Interactions::Definer
     interaction = Interactions::InteractionDefinition.new(interaction_name)
     interaction.instance_eval(&block)
     @interactions[interaction_name] = interaction
-  end
-
-  def listen(event, action)
-    raise NoCurrentInteractionDefined unless @current_interaction
-
-    @interactions[@current_interaction].listen(event, action)
   end
 end

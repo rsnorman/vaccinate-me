@@ -16,7 +16,8 @@ class RequestUserFullName
     client.messages.create(
       from: from,
       to: to,
-      body: 'Great to hear you want to get vaccinated! Let\'s collect some information so we can contact you when ready? What is your full name?'
+      body: 'Great to hear you want to get vaccinated! Let\'s collect some information so we can ' \
+            'contact you when ready. What is your full name?'
     )
   end
 end
