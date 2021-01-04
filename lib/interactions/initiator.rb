@@ -5,5 +5,10 @@ class Interactions::Initiator
   end
 
   def initiate!
+    ::Interaction.transaction do
+      ::Interaction.create!(
+        interaction_type: InteractionType.find_or_create_by!(name: @interaction_definition.name)
+      )
+    end
   end
 end
