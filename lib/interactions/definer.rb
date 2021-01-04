@@ -23,7 +23,7 @@ class Interactions::Definer
   end
 
   def define(interaction_name, &block)
-    interaction = Interactions::Interaction.new(interaction_name)
+    interaction = Interactions::InteractionDefinition.new(interaction_name)
     interaction.instance_eval(&block)
     @interactions[interaction_name] = interaction
   end

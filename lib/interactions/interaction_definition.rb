@@ -1,4 +1,4 @@
-class Interactions::Interaction
+class Interactions::InteractionDefinition
   attr_reader :name, :events
 
   def initialize(name)
